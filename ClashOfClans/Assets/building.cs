@@ -20,29 +20,37 @@ public class building : MonoBehaviour
 
     void findObjective ()
     {
+        Debug.Log("test0");
         var possibleEnemy = Physics.OverlapSphere(transform.position, attackRange);
         for (var i = 0; i < possibleEnemy.Length; i++)
         {
+            Debug.Log("test1");
             if(possibleEnemy[i].gameObject.layer == 8)
             {
+                Debug.Log("test2");
                 var myInformation = gameObject.GetComponent<properties>(); // this might not work
                 var Properties = possibleEnemy[i].gameObject.GetComponent<properties>();
+                Debug.Log("test2.1");
                 if (Properties.team != myInformation.team)
                 {
-                    if((Properties.airType == true && airAttack == true) || (Properties.groundType == true && groundAttack == true))
+                    Debug.Log("test3");
+                    if ((Properties.airType == true && airAttack == true) || (Properties.groundType == true && groundAttack == true))
                     {
+                        Debug.Log("test3");
                         Target = possibleEnemy[i].gameObject;
                         return;
                     }
                 }
             }
         }
-        Target = GameObject.Find("Target");
+        // Target = GameObject.Find("Target");
     }
   
     void Start()
     {
-        Target = null;
+        Debug.Log("start");
+        var myInformation = gameObject.GetComponent<properties>();
+         Target = null;
         attackTimer = attackRatio;
         findObjective();
     }
