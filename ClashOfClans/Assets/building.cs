@@ -20,23 +20,23 @@ public class building : MonoBehaviour
 
     void findObjective ()
     {
-        Debug.Log("test0");
+        // Debug.Log("test0");
         var possibleEnemy = Physics.OverlapSphere(transform.position, attackRange);
         for (var i = 0; i < possibleEnemy.Length; i++)
         {
-            Debug.Log("test1");
-            if(possibleEnemy[i].gameObject.layer == 8)
+            //  Debug.Log("test1");
+            if (possibleEnemy[i].gameObject.layer == 8)
             {
-                Debug.Log("test2");
+                //  Debug.Log("test2");
                 var myInformation = gameObject.GetComponent<properties>(); // this might not work
                 var Properties = possibleEnemy[i].gameObject.GetComponent<properties>();
-                Debug.Log("test2.1");
+                //  Debug.Log("test2.1");
                 if (Properties.team != myInformation.team)
                 {
-                    Debug.Log("test3");
+                    //   Debug.Log("test3");
                     if ((Properties.airType == true && airAttack == true) || (Properties.groundType == true && groundAttack == true))
                     {
-                        Debug.Log("test3");
+                     //   Debug.Log("test4");
                         Target = possibleEnemy[i].gameObject;
                         return;
                     }
@@ -48,7 +48,7 @@ public class building : MonoBehaviour
   
     void Start()
     {
-        Debug.Log("start");
+     //   Debug.Log("start");
         var myInformation = gameObject.GetComponent<properties>();
          Target = null;
         attackTimer = attackRatio;
@@ -59,18 +59,24 @@ public class building : MonoBehaviour
     {
         if(attackTimer >= attackRatio)
         {
-            if(Vector3.Distance(Target.transform.position, gameObject.transform.position) <= attackRange)
+           // Debug.Log("attackTimer >= attackRatio");
+            if(Target && Vector3.Distance(Target.transform.position, gameObject.transform.position) <= attackRange)
             {
+             //   Debug.Log("attack");
                 attack();
                 attackTimer = 0f;
             }
+           // Debug.Log("find obj"); // this should be after else but for some reason its nor working
+           // findObjective();
             else
             {
+             //   Debug.Log("find obj");
                 findObjective();
             }
         }
         else
         {
+          //  Debug.Log("attack timer ++");
             attackTimer += Time.deltaTime;
         }
     }
