@@ -12,7 +12,7 @@ public class Unit : MonoBehaviour
 
 	//Movement
 	public float velocity = 6f;
-	public GameObject destination;
+	public Vector3 destination;
 
 	//Fighting
 	public float detectionRange = 12f;
@@ -49,7 +49,7 @@ public class Unit : MonoBehaviour
 		{
 			if (_state == state.moving)
 			{
-				transform.LookAt(new Vector3(destination.transform.position.x, transform.position.y, destination.transform.position.z)); // Object looks direction where it goes
+				transform.LookAt(new Vector3(destination.x, 0, destination.z) + new Vector3(transform.position.x, transform.position.y, transform.position.z)); // Object looks direction where it goes
 				transform.Translate(Vector3.forward * velocity * Time.deltaTime);
 			}
 			else if (_state == state.attack)
@@ -114,8 +114,10 @@ public class Unit : MonoBehaviour
 
 	void attack()
 	{
+		var myInfo = gameObject.GetComponent<properties>();
 		var shoot = Instantiate(attackGameObject, transform.position, Quaternion.identity);
 		var shootInfo = shoot.GetComponent<Projectile>();
 		shootInfo.objective = Target;
+		shootInfo.projectileOfTeam = myInfo.team;
 	}
 }
