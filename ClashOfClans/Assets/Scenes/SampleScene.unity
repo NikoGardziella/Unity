@@ -578,6 +578,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aacd64142391120469780f10cc1e9e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  teamNumber: 2
+  teams: []
+  teamColor: []
+  vicotryUi: {fileID: 0}
 --- !u!4 &655873038
 Transform:
   m_ObjectHideFlags: 0
@@ -970,7 +974,7 @@ GameObject:
   - component: {fileID: 1058923028}
   - component: {fileID: 1058923027}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TeamName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
