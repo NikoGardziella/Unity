@@ -22,12 +22,14 @@ public class gameController : MonoBehaviour
         
     }
 
-    void DestroyTeam(string team)
+    public void DestroyTeam(string team)
     {
         int i = 0;
-
+        Debug.Log("function DestroyTeam               !!!!!!!!!!!!!!!!!!");
+        Debug.Log(teams.Length);
         while (i < teams.Length)
         {
+            Debug.Log("while");
             if(teams[i] == team)
             {
                 teams[i] = "";

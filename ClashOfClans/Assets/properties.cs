@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class properties : MonoBehaviour
 {
-
+    public GameObject GameController1; // To main tower
     public int currentHealth = 100;
     public string team = "blue";
 
@@ -42,6 +42,11 @@ public class properties : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            /*    var myinfo = gameObject.GetComponent<properties>();
+                var controller = gameObject.transform.Find("GameController").GetComponent<gameController>();
+                controller.DestroyTeam(myinfo.team); */
+            var myinfo = gameObject.GetComponent<properties>(); //to main tower
+            GameController1.GetComponent<gameController>().DestroyTeam(myinfo.team); // to main tower Doesnt contine after this
             currentHealth = 0;
             Instantiate(deathEffect, transform.position, Quaternion.identity);
             Destroy(healthBar);

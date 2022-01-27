@@ -112,4 +112,7 @@ MonoBehaviour:
   velocity: 3
   hitBoxRadius: 0.25
   objective: {fileID: 0}
-  damage: 10
+  damage: 30
+  useDamageArea: 0
+  damageAreaRadius: 3
+  projectileOfTeam: 
