@@ -26,10 +26,8 @@ public class gameController : MonoBehaviour
     {
         int i = 0;
         Debug.Log("function DestroyTeam               !!!!!!!!!!!!!!!!!!");
-        Debug.Log(teams.Length);
         while (i < teams.Length)
         {
-            Debug.Log("while");
             if(teams[i] == team)
             {
                 teams[i] = "";

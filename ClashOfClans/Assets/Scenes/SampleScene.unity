@@ -323,6 +323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e014c0440577e43adfc25c93667cbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameController1: {fileID: 0}
   currentHealth: 100
   team: red
   maxHealth: 100
@@ -579,9 +580,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamNumber: 2
-  teams: []
-  teamColor: []
-  vicotryUi: {fileID: 0}
+  teams:
+  - Opponen
+  - Me
+  teamColor:
+  - {r: 1, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0.28101563, b: 1, a: 0}
+  vicotryUi: {fileID: 642956295}
 --- !u!4 &655873038
 Transform:
   m_ObjectHideFlags: 0
@@ -879,6 +884,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e014c0440577e43adfc25c93667cbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameController1: {fileID: 0}
   currentHealth: 100
   team: blue
   maxHealth: 100
@@ -1168,6 +1174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e014c0440577e43adfc25c93667cbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameController1: {fileID: 0}
   currentHealth: 100
   team: blue
   maxHealth: 100
@@ -1564,6 +1571,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e014c0440577e43adfc25c93667cbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameController1: {fileID: 0}
   currentHealth: 100
   team: red
   maxHealth: 100
@@ -1862,6 +1870,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e014c0440577e43adfc25c93667cbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameController1: {fileID: 0}
   currentHealth: 100
   team: red
   maxHealth: 100
@@ -2000,6 +2009,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e014c0440577e43adfc25c93667cbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameController1: {fileID: 0}
   currentHealth: 100
   team: blue
   maxHealth: 100
@@ -2224,6 +2234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e014c0440577e43adfc25c93667cbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameController1: {fileID: 0}
   currentHealth: 100
   team: blue
   maxHealth: 100
@@ -2451,6 +2462,7 @@ GameObject:
   - component: {fileID: 2058791814}
   - component: {fileID: 2058791813}
   - component: {fileID: 2058791812}
+  - component: {fileID: 2058791811}
   m_Layer: 8
   m_Name: Tower
   m_TagString: Untagged
@@ -2472,6 +2484,19 @@ Transform:
   m_Father: {fileID: 1330346134}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2058791811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058791809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15b1e69e9ff68a8499c45851bdb7f4b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameController1: {fileID: 655873036}
 --- !u!114 &2058791812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2502,6 +2527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e014c0440577e43adfc25c93667cbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameController1: {fileID: 0}
   currentHealth: 100
   team: red
   maxHealth: 100
@@ -2627,6 +2653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e014c0440577e43adfc25c93667cbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameController1: {fileID: 0}
   currentHealth: 100
   team: blue
   maxHealth: 100
