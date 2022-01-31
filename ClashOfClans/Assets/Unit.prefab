@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7693318984746048858
+--- !u!1 &3486014889715545144
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1331777466307594307}
-  - component: {fileID: 7271958304311876102}
-  - component: {fileID: 6097902725049954495}
-  - component: {fileID: 6077578370988438517}
-  - component: {fileID: 4393670281701605013}
-  m_Layer: 0
-  m_Name: attackProjectile
+  - component: {fileID: 3486014889715545123}
+  - component: {fileID: 3486014889715545148}
+  - component: {fileID: 3486014889715545149}
+  - component: {fileID: 3486014889715545150}
+  - component: {fileID: 3486014889715545151}
+  - component: {fileID: 3486014889715545122}
+  m_Layer: 8
+  m_Name: Unit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1331777466307594307
+--- !u!4 &3486014889715545123
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7693318984746048858}
+  m_GameObject: {fileID: 3486014889715545144}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.7759995, y: 0.30496776, z: -3.3848572}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalPosition: {x: -4.6292686, y: 0.5, z: -7.13303}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7271958304311876102
+--- !u!33 &3486014889715545148
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7693318984746048858}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &6097902725049954495
+  m_GameObject: {fileID: 3486014889715545144}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &3486014889715545149
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7693318984746048858}
+  m_GameObject: {fileID: 3486014889715545144}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -61,8 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2b929e5e03e07ab4f82484886cf5bb53, type: 2}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: a2ea2cb2c7c3a414ebc05c05d71b297c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,35 +84,58 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6077578370988438517
-BoxCollider:
+--- !u!135 &3486014889715545150
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7693318984746048858}
+  m_GameObject: {fileID: 3486014889715545144}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4393670281701605013
+--- !u!114 &3486014889715545151
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7693318984746048858}
+  m_GameObject: {fileID: 3486014889715545144}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80599d0ee7eaaf34fa4d3d58aa63fe02, type: 3}
+  m_Script: {fileID: 11500000, guid: 62e014c0440577e43adfc25c93667cbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 3
-  hitBoxRadius: 0.25
-  objective: {fileID: 0}
-  damage: 10
-  useDamageArea: 0
-  damageAreaRadius: 3
-  projectileOfTeam: 
+  GameController1: {fileID: 0}
+  currentHealth: 100
+  team: blue
+  maxHealth: 100
+  healthBar: {fileID: 8346096346803303925, guid: 96ab92478d859244bb6b59723d909f19, type: 3}
+  deathEffect: {fileID: 3683510527505658152, guid: 89b3382975278554886ed99ca8b5b818, type: 3}
+  airType: 0
+  groundType: 1
+--- !u!114 &3486014889715545122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3486014889715545144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b819e04dec6f17b49be8f110de844319, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: 6
+  destination: {x: 0, y: 0, z: 0}
+  detectionRange: 12
+  detectionRate: 0.1
+  attackRange: 10
+  attackGameObject: {fileID: 7693318984746048858, guid: e0ac9ac1d6a369b4c907ebfd0fbd802f, type: 3}
+  attackRatio: 1
+  airAttack: 1
+  groundAttack: 1
+  invocationTime: 0.25

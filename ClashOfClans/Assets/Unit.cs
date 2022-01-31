@@ -37,6 +37,7 @@ public class Unit : MonoBehaviour
 
 	void Start()
 	{
+	//	transform.Translate(Vector3.down * 100);
 		var myInfo = gameObject.GetComponent<properties>();
 		attackTimer = attackRatio;
 		InvokeRepeating("checkState", invocationTime, detectionRate);
