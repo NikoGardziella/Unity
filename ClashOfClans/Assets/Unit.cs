@@ -11,7 +11,7 @@ public class Unit : MonoBehaviour
 	state _state = state.inActive;
 
 	//Movement
-	public float velocity = 20f;
+	public float velocity = 6f;
 	public Vector3 destination;
 
 	//Fighting
@@ -69,10 +69,9 @@ public class Unit : MonoBehaviour
 						else
 						{
 							Debug.Log("test1");
-							var move = Vector3.Distance(Target.transform.position, gameObject.transform.position); // remove
-							transform.Translate(Vector3.forward * velocity * Time.deltaTime);
+						//	var move = Vector3.Distance(Target.transform.position, gameObject.transform.position); // remove
 							transform.LookAt(new Vector3(Target.transform.position.x, transform.position.y, Target.transform.position.y)); // .y missgin Target?
-							
+							transform.Translate(Vector3.forward * velocity * Time.deltaTime);
 
 							Debug.Log(Vector3.forward *velocity * Time.deltaTime);
 						}
