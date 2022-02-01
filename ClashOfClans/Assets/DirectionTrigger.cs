@@ -23,10 +23,10 @@ public class DirectionTrigger : MonoBehaviour
 
         if(Unit && Properties)
         {
-            Debug.Log(other.gameObject.name);
+         //   Debug.Log(other.gameObject.name);
             if(Properties.team == team)
             {
-                Debug.Log(other.gameObject.name);
+              //  Debug.Log(other.gameObject.name);
                 Unit.destination = Direction;
             }
         }

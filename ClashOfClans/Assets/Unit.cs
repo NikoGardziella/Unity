@@ -11,7 +11,7 @@ public class Unit : MonoBehaviour
 	state _state = state.inActive;
 
 	//Movement
-	public float velocity = 6f;
+	public float velocity = 20f;
 	public Vector3 destination;
 
 	//Fighting
@@ -61,17 +61,25 @@ public class Unit : MonoBehaviour
 					{
 						if (Vector3.Distance(Target.transform.position, gameObject.transform.position) <= attackRange)
 						{
+							Debug.Log("attack");
+							Debug.Log(Vector3.Distance(Target.transform.position, gameObject.transform.position));
 							attack();
 							attackTimer = 0;
 						}
 						else
 						{
-							transform.LookAt(new Vector3(Target.transform.position.x, transform.position.y, Target.transform.position.y)); // .y missgin Target?
+							Debug.Log("test1");
+							var move = Vector3.Distance(Target.transform.position, gameObject.transform.position); // remove
 							transform.Translate(Vector3.forward * velocity * Time.deltaTime);
+							transform.LookAt(new Vector3(Target.transform.position.x, transform.position.y, Target.transform.position.y)); // .y missgin Target?
+							
+
+							Debug.Log(Vector3.forward *velocity * Time.deltaTime);
 						}
 					}
 					else
 					{
+						Debug.Log("checkstate");
 						checkState();
 					}
 				}
@@ -93,7 +101,7 @@ public class Unit : MonoBehaviour
 					var myInfo = gameObject.GetComponent<properties>();
 					if (Properties.team != myInfo.team) // check that is other team
 					{
-						if((Properties.airType == true && groundAttack == true) || (Properties.groundType == true && airAttack == true))
+						if((Properties.airType == true && groundAttack == true) || (Properties.groundType == true && airAttack == true)) // remove?
 						{
 							Target = PossibleEnemys[i].gameObject;
 							_state = state.attack;
