@@ -4,90 +4,71 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DragAndDrop : MonoBehaviour, IPointerDownHandler
+public class DragAndDrop : MonoBehaviour
 {
 	public GameObject unit;
-	public GameObject holdingThing;
 	private RectTransform rectTransform;
 	private RaycastHit rchit;
 	public bool UnitDrop = false;
-	public Image image;
+	public Button UnitButton;
+	public int Radistance = 10;
+	private Vector3 Point;
+	public LayerMask layermask;
+
+	public Texture2D cursorTexture;
+	public CursorMode cursorMode = CursorMode.Auto;
+	public Vector2 hotSpot = Vector2.zero;
 
 
-
-	void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
+	void Start()
 	{
-		Debug.Log("OnpointerDown1");
+		Button btn = UnitButton.GetComponent<Button>();
+		btn.onClick.AddListener(AddUnit);
+	}
+
+	void AddUnit()
+	{
 		if (!UnitDrop)
 		{
-			image.gameObject.SetActive(true);
+			Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+			Debug.Log("!Unitdrop");
 			UnitDrop = true;
+			return;
+			
 		}
 
 		if (UnitDrop)
 		{
-			image.gameObject.SetActive(false);
+			Cursor.SetCursor(null, Vector2.zero, cursorMode);
+			Debug.Log("Unitdrop");
 			UnitDrop = false;
+			return;
 		}
-	}
-
-	/* private void Awake()
-	{
-		rectTransform = GetComponent<RectTransform>();
-	}
-	void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
-	{
-		Debug.Log("OnBeginDrag");
-		//throw new System.NotImplementedException();
-	}
-
-	void IDragHandler.OnDrag(PointerEventData eventData)
-	{
-		rectTransform.anchoredPosition += eventData.delta;
-	}
-
-	void IEndDragHandler.OnEndDrag(PointerEventData eventData)
-	{
-		Debug.Log("OnEndDrag");
-		//throw new System.NotImplementedException();
+		Debug.Log("clicked");
+		return;
 	}
 
 
 
-	public void spawnAndHoldUnit(GameObject unitPrefab)
-	{
-
-		holdingThing = Instantiate(unitPrefab) as GameObject;
-	} */
 
 	public void Update()
 	{
 
 
+		if (Input.GetMouseButtonDown(0) && UnitDrop == true)
+		{
 
-
-
-		/*	if (holdingThing)
+			RaycastHit hit;
+			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			if (Physics.Raycast(ray, out hit, layermask.value))
 			{
-				rchit = new RaycastHit();
-				if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out rchit, 1000f))
-				{
-					holdingThing.transform.position = rchit.point;
-
-					if (Input.GetMouseButtonUp(0)) //  && rchit.transform.gameObject.tag == "Ground"
-					{
-						holdingThing = null;
-					}
-				}
-
+				Point = hit.point;
+				Instantiate(unit, Point, Quaternion.identity);
 			}
 
-			if (Input.GetMouseButtonDown(0))
-			{
-
-				//holdingThing = null;
-				spawnAndHoldUnit(unit);
-			}  */
+			
+		}
+	
 	}
 
 }

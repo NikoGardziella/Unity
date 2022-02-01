@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 339151503}
   - component: {fileID: 339151506}
   - component: {fileID: 339151505}
+  - component: {fileID: 339151504}
   m_Layer: 5
   m_Name: UnitSlot1
   m_TagString: Untagged
@@ -157,9 +158,25 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 183, y: 217}
+  m_AnchoredPosition: {x: 183, y: 222}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &339151504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339151502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: badcb55e87de19948814a834e4ccf8df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit: {fileID: 0}
+  holdingThing: {fileID: 0}
+  UnitDrop: 0
+  image: {fileID: 0}
 --- !u!114 &339151505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1282,7 +1299,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 187, y: 217}
+  m_AnchoredPosition: {x: 183.6, y: 219.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!33 &1445994596
@@ -1312,7 +1329,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a2ea2cb2c7c3a414ebc05c05d71b297c, type: 2}
+  - {fileID: 2100000, guid: 1ab442eb37f4f164cae52db20421b920, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1348,6 +1365,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unit: {fileID: 3486014889715545144, guid: 7180b35a34d21294488b375db50a4f33, type: 3}
   holdingThing: {fileID: 0}
+  UnitDrop: 0
+  image: {fileID: 0}
 --- !u!114 &1445994599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1385,7 +1404,7 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1445994594}
-  m_CullTransparentMesh: 1
+  m_CullTransparentMesh: 0
 --- !u!1 &1529284013
 GameObject:
   m_ObjectHideFlags: 0
