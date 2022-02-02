@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Unit : MonoBehaviour
 {
    public enum state
@@ -70,7 +71,7 @@ public class Unit : MonoBehaviour
 						{
 							Debug.Log("test1");
 						//	var move = Vector3.Distance(Target.transform.position, gameObject.transform.position); // remove
-							transform.LookAt(new Vector3(Target.transform.position.x, transform.position.y, Target.transform.position.y)); // .y missgin Target?
+							transform.LookAt(new Vector3(Target.transform.position.x, transform.position.y, Target.transform.position.z)); // .y missgin Target?
 							transform.Translate(Vector3.forward * velocity * Time.deltaTime);
 							Debug.Log("distance"+Vector3.Distance(Target.transform.position, gameObject.transform.position));
 							Debug.Log("forward"+Vector3.forward *velocity * Time.deltaTime);
@@ -79,7 +80,7 @@ public class Unit : MonoBehaviour
 							Debug.Log("V3.forward"+Vector3.forward);
 							Debug.Log("LookAt" + new Vector3(Target.transform.position.x, transform.position.y, Target.transform.position.y));
 
-						}
+						} 
 					}
 
 				}
