@@ -30,7 +30,7 @@ public class Unit : MonoBehaviour
    // public bool stateMoving;
    // public bool stateAttack;
 
-	public float invocationTime = 0.25f;
+	public float invocationTime = 0.25f; // wait time
 	// public var currentState : state = state.inactive;
 
 	// private var myInfo : properties;
@@ -59,28 +59,34 @@ public class Unit : MonoBehaviour
 				{
 					if (attackTimer >= attackRatio)
 					{
-						if (Vector3.Distance(Target.transform.position, gameObject.transform.position) <= attackRange)
+						if (Vector3.Distance(gameObject.transform.position, Target.transform.position) <= attackRange)
 						{
-							Debug.Log("attack");
+							Debug.Log("attack!!!!!!!");
 							Debug.Log(Vector3.Distance(Target.transform.position, gameObject.transform.position));
 							attack();
 							attackTimer = 0;
 						}
-						else
+						else // this is not working. Use pathfinding??
 						{
 							Debug.Log("test1");
 						//	var move = Vector3.Distance(Target.transform.position, gameObject.transform.position); // remove
 							transform.LookAt(new Vector3(Target.transform.position.x, transform.position.y, Target.transform.position.y)); // .y missgin Target?
 							transform.Translate(Vector3.forward * velocity * Time.deltaTime);
+							Debug.Log("distance"+Vector3.Distance(Target.transform.position, gameObject.transform.position));
+							Debug.Log("forward"+Vector3.forward *velocity * Time.deltaTime);
+							Debug.Log("velocity"+velocity);
+							Debug.Log("time"+Time.deltaTime);
+							Debug.Log("V3.forward"+Vector3.forward);
+							Debug.Log("LookAt" + new Vector3(Target.transform.position.x, transform.position.y, Target.transform.position.y));
 
-							Debug.Log(Vector3.forward *velocity * Time.deltaTime);
 						}
 					}
-					else
-					{
-						Debug.Log("checkstate");
-						checkState();
-					}
+
+				}
+				else
+				{
+					Debug.Log("checkstate");
+					checkState();
 				}
 			}
 		}
@@ -100,12 +106,12 @@ public class Unit : MonoBehaviour
 					var myInfo = gameObject.GetComponent<properties>();
 					if (Properties.team != myInfo.team) // check that is other team
 					{
-						if((Properties.airType == true && groundAttack == true) || (Properties.groundType == true && airAttack == true)) // remove?
-						{
+						//if((Properties.airType == true && groundAttack == true) || (Properties.groundType == true && airAttack == true)) // remove?
+						//{
 							Target = PossibleEnemys[i].gameObject;
 							_state = state.attack;
 							return;
-						}
+						//}
 					}
 				}
 			}
