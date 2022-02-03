@@ -46,9 +46,9 @@ public class properties : MonoBehaviour
                 var controller = gameObject.transform.Find("GameController").GetComponent<gameController>();
                 controller.DestroyTeam(myinfo.team); */
             var myinfo = gameObject.GetComponent<properties>(); //to main tower
-            GameController1.GetComponent<gameController>().DestroyTeam(myinfo.team); // to main tower Doesnt contine after this
+            //GameController1.GetComponent<gameController>().DestroyTeam(myinfo.team); // to main tower Doesnt contine after this
             currentHealth = 0;
-            Debug.Log("tesrt1");
+            Debug.Log("(currentHealth <= 0");
             Instantiate(deathEffect, transform.position, Quaternion.identity);
             Debug.Log("test2");
             Destroy(healthBar);

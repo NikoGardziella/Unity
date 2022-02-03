@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class gameController : MonoBehaviour
 {
@@ -53,13 +54,13 @@ public class gameController : MonoBehaviour
 
     void teamWin(string team, int showColor)
     {
-  
+        Debug.Log("team" + team);
         var newScale = vicotryUi.transform.localScale;
         newScale.x = newScale.x + 1f;
         vicotryUi.transform.localScale = newScale;
-
+        Time.timeScale = 0;
         vicotryUi.transform.Find("TeamName").GetComponent<TextEditor>().text = team;
         vicotryUi.transform.Find("TeamName").GetComponent<Material>().color = teamColor[showColor];
-        Time.timeScale = 0;
+
     }
 }

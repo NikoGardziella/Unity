@@ -60,6 +60,16 @@ public class Unit : MonoBehaviour
 				{
 					if (attackTimer >= attackRatio)
 					{
+						if (Target.tag == "Tower") 
+						{
+							Debug.Log("Hitting tower");
+							if (Vector3.Distance(gameObject.transform.position, Target.transform.position) <= 2)
+							{
+								Debug.Log("attack ´towerrr!!!!!!!");
+								attack();
+								attackTimer = 0;
+							}
+						}
 						if (Vector3.Distance(gameObject.transform.position, Target.transform.position) <= attackRange)
 						{
 							Debug.Log("attack!!!!!!!");
@@ -67,19 +77,10 @@ public class Unit : MonoBehaviour
 							attack();
 							attackTimer = 0;
 						}
-						else // this is not working. Use pathfinding??
+						else 
 						{
-							Debug.Log("test1");
-						//	var move = Vector3.Distance(Target.transform.position, gameObject.transform.position); // remove
 							transform.LookAt(new Vector3(Target.transform.position.x, transform.position.y, Target.transform.position.z)); // .y missgin Target?
 							transform.Translate(Vector3.forward * velocity * Time.deltaTime);
-							Debug.Log("distance"+Vector3.Distance(Target.transform.position, gameObject.transform.position));
-							Debug.Log("forward"+Vector3.forward *velocity * Time.deltaTime);
-							Debug.Log("velocity"+velocity);
-							Debug.Log("time"+Time.deltaTime);
-							Debug.Log("V3.forward"+Vector3.forward);
-							Debug.Log("LookAt" + new Vector3(Target.transform.position.x, transform.position.y, Target.transform.position.y));
-
 						} 
 					}
 

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class DragAndDrop : MonoBehaviour
 {
-	public GameObject unit;
+	private GameObject unit;
 	private RectTransform rectTransform;
 	private RaycastHit rchit;
 	public bool UnitDrop = false;
@@ -14,6 +14,8 @@ public class DragAndDrop : MonoBehaviour
 	public int Radistance = 10;
 	private Vector3 Point;
 	public LayerMask layermask;
+	public string unitSelect;
+
 
 	public Texture2D cursorTexture;
 	public CursorMode cursorMode = CursorMode.Auto;
@@ -24,6 +26,14 @@ public class DragAndDrop : MonoBehaviour
 	{
 		Button btn = UnitButton.GetComponent<Button>();
 		btn.onClick.AddListener(AddUnit);
+		if (unitSelect == "unitMelee")
+		{
+			unit = GameObject.Find("unitMeleeBlue");
+		}
+		if (unitSelect == "unitRanged")
+		{
+			unit = GameObject.Find("unitRangedBlue");
+		}
 	}
 
 	void AddUnit()
