@@ -15,8 +15,6 @@ public class building : MonoBehaviour
     private GameObject Target;
 
     public Transform attackOrigin;
- 
-      
 
     void findObjective ()
     {
@@ -87,4 +85,5 @@ public class building : MonoBehaviour
         var shootInfo = shoot.GetComponent<Projectile>();
         shootInfo.objective = Target; 
     }
+
 }
