@@ -25,6 +25,7 @@ public class Unit : MonoBehaviour
 	public bool groundAttack = true;
 	private GameObject Target = null;
 	private float attackTimer = 0f;
+	private GameObject ground;
 
 	// State
    // public bool stateInactive = true;
@@ -41,6 +42,10 @@ public class Unit : MonoBehaviour
 	//	transform.Translate(Vector3.down * 100);
 		var myInfo = gameObject.GetComponent<properties>();
 		attackTimer = attackRatio;
+		/* var UnitPos = gameObject.transform.position;
+		ground.transform.Find("Ground").gameObject.GetComponent<Vector3>();
+		UnitPos.y = ground.transform.position.y + 1;
+		gameObject.transform.position = UnitPos; */
 		InvokeRepeating("checkState", invocationTime, detectionRate);
 	}
 
