@@ -11,11 +11,21 @@ public class Dialog : MonoBehaviour
 	public float typingSpeed;
 
 	public GameObject continueButton;
+	public Animator textDisplayAnim;
 
-	private void Start()
+	void Start()
 	{
 		StartCoroutine(Type());
 	}
+
+	void Update()
+	{
+		if (textDisplay.text == sentences[index])
+		{
+			continueButton.SetActive(true);
+		}
+	}
+
 
 	IEnumerator Type()
 	{
@@ -28,6 +38,8 @@ public class Dialog : MonoBehaviour
 
 	public void nextSentence()
 	{
+		textDisplayAnim.SetTrigger("change");
+		continueButton.SetActive(false);
 		if (index < sentences.Length - 1)
 		{
 			index++;
@@ -35,6 +47,9 @@ public class Dialog : MonoBehaviour
 			StartCoroutine(Type());
 		}
 		else
+		{
 			textDisplay.text = "";
+			continueButton.SetActive(false);
+		}
 	}
 }
