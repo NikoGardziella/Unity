@@ -8,6 +8,13 @@ public class dialogueTrigger : MonoBehaviour
 
 	public void triggerDialogue()
 	{
+		FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+	}
 
+	private void OnCollisionEnter(Collision collision)
+	{
+	
+		Debug.Log("on collidr enter");
+		triggerDialogue(); // destroy trigger after dialogue?
 	}
 }

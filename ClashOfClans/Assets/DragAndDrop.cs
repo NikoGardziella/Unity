@@ -77,7 +77,7 @@ public class DragAndDrop : MonoBehaviour
 			if (Physics.Raycast(ray, out hit, layermask.value))
 			{
 				Point = hit.point;
-				Debug.Log("point" + Point);
+				//Debug.Log("point" + Point);
 				Instantiate(unit, Point, Quaternion.identity);
 			}
 

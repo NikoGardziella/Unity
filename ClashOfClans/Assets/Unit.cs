@@ -67,18 +67,18 @@ public class Unit : MonoBehaviour
 					{
 						if (Target.tag == "Tower") 
 						{
-							Debug.Log("Hitting tower");
+							//Debug.Log("Hitting tower");
 							if (Vector3.Distance(gameObject.transform.position, Target.transform.position) <= 2)
 							{
-								Debug.Log("attack ´towerrr!!!!!!!");
+								//Debug.Log("attack ´towerrr!!!!!!!");
 								attack();
 								attackTimer = 0;
 							}
 						}
 						if (Vector3.Distance(gameObject.transform.position, Target.transform.position) <= attackRange)
 						{
-							Debug.Log("attack!!!!!!!");
-							Debug.Log(Vector3.Distance(Target.transform.position, gameObject.transform.position));
+							//Debug.Log("attack!!!!!!!");
+							//Debug.Log(Vector3.Distance(Target.transform.position, gameObject.transform.position));
 							attack();
 							attackTimer = 0;
 						}
@@ -92,7 +92,7 @@ public class Unit : MonoBehaviour
 				}
 				else
 				{
-					Debug.Log("checkstate");
+					//Debug.Log("checkstate");
 					checkState();
 				}
 			}
