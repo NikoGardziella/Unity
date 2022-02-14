@@ -15,6 +15,7 @@ public class dialogueTrigger : MonoBehaviour
 	{
 	
 		Debug.Log("on collidr enter");
+		Destroy(gameObject);
 		triggerDialogue(); // destroy trigger after dialogue?
 	}
 }
