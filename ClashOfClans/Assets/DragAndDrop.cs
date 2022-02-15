@@ -34,6 +34,7 @@ public class DragAndDrop : MonoBehaviour
 
 	void AddUnit()
 	{
+		Debug.Log("name:" + name);
 		if (unitSelect == "unitMelee")
 		{
 			unit = meleeUnit;
@@ -81,6 +82,7 @@ public class DragAndDrop : MonoBehaviour
 				var NewPos = Point;
 				NewPos.y = ground.transform.position.y + 1f;
 				Point = NewPos;
+
 
 				Debug.Log("point" + Point);
 				Debug.Log("unit: " + unit);
