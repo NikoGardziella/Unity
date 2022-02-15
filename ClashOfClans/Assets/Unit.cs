@@ -26,6 +26,7 @@ public class Unit : MonoBehaviour
 	private GameObject Target = null;
 	private float attackTimer = 0f;
 	private GameObject ground;
+	public bool unitIdle = false;
 
 	// State
    // public bool stateInactive = true;
@@ -57,7 +58,11 @@ public class Unit : MonoBehaviour
 			if (_state == state.moving)
 			{
 				transform.LookAt(new Vector3(destination.x, 0, destination.z) + new Vector3(transform.position.x, transform.position.y, transform.position.z)); // Object looks direction where it goes
+				if (unitIdle == false)
+				{
 				transform.Translate(Vector3.forward * velocity * Time.deltaTime);
+				}
+
 			}
 			else if (_state == state.attack)
 			{
@@ -71,6 +76,7 @@ public class Unit : MonoBehaviour
 							if (Vector3.Distance(gameObject.transform.position, Target.transform.position) <= 2)
 							{
 								//Debug.Log("attack ´towerrr!!!!!!!");
+								unitIdle = false;
 								attack();
 								attackTimer = 0;
 							}
@@ -79,6 +85,7 @@ public class Unit : MonoBehaviour
 						{
 							//Debug.Log("attack!!!!!!!");
 							//Debug.Log(Vector3.Distance(Target.transform.position, gameObject.transform.position));
+							unitIdle = false;
 							attack();
 							attackTimer = 0;
 						}
@@ -113,7 +120,7 @@ public class Unit : MonoBehaviour
 					var myInfo = gameObject.GetComponent<properties>();
 					if (Properties.team != myInfo.team) // check that is other team
 					{
-						//if((Properties.airType == true && groundAttack == true) || (Properties.groundType == true && airAttack == true)) // remove?
+						//if((Properties.airType == true && groundAttack == true) || (Properties.groundType == true && airAttack == true)) // for flying units
 						//{
 							Target = PossibleEnemys[i].gameObject;
 							_state = state.attack;

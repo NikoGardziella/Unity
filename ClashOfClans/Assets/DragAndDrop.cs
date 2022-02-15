@@ -9,15 +9,15 @@ public class DragAndDrop : MonoBehaviour
 	private GameObject unit;
 	private RectTransform rectTransform;
 	private RaycastHit rchit;
-	public static bool UnitDrop = false;
+	static public bool UnitDrop = false;
 	public Button UnitButton;
-	public int Radistance = 10;
+	// public int Radistance = 10;
 	private Vector3 Point;
 	public LayerMask layermask;
 	public string unitSelect;
 	public GameObject meleeUnit;
 	public GameObject rangedUnit;
-
+	public GameObject ground;
 
 	public Texture2D cursorTexture;
 	public CursorMode cursorMode = CursorMode.Auto;
@@ -39,7 +39,7 @@ public class DragAndDrop : MonoBehaviour
 			unit = meleeUnit;
 			//unit = GameObject.Find("unitMeleeBlue");
 		}
-		if (unitSelect == "unitRanged")
+		 if (unitSelect == "unitRanged")
 		{
 			unit = rangedUnit;
 			//unit = GameObject.Find("unitRangedBlue");
@@ -47,16 +47,17 @@ public class DragAndDrop : MonoBehaviour
 		if (!UnitDrop)
 		{
 			Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
-			Debug.Log("!Unitdrop");
+			Debug.Log(UnitDrop);
 			UnitDrop = true;
+
 			return;
-			
 		}
 
 		if (UnitDrop)
 		{
 			Cursor.SetCursor(null, Vector2.zero, cursorMode);
-			Debug.Log("Unitdrop");
+
+			Debug.Log(UnitDrop);
 			UnitDrop = false;
 			return;
 		}
@@ -77,7 +78,12 @@ public class DragAndDrop : MonoBehaviour
 			if (Physics.Raycast(ray, out hit, layermask.value))
 			{
 				Point = hit.point;
-				//Debug.Log("point" + Point);
+				var NewPos = Point;
+				NewPos.y = ground.transform.position.y + 1f;
+				Point = NewPos;
+
+				Debug.Log("point" + Point);
+				Debug.Log("unit: " + unit);
 				Instantiate(unit, Point, Quaternion.identity);
 			}
 

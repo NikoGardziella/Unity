@@ -123,6 +123,84 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 0e1af79c1b035b646ba2b3c22849a167, type: 2}
+--- !u!1 &143812482
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 143812486}
+  - component: {fileID: 143812485}
+  - component: {fileID: 143812484}
+  - component: {fileID: 143812483}
+  m_Layer: 0
+  m_Name: DialogueTrigger (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!54 &143812483
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143812482}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 14
+  m_CollisionDetection: 0
+--- !u!114 &143812484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143812482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3490423094664e74ab4d51b8cc06ef9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    sentences:
+    - "This is another dialogue\t"
+    - Yes
+--- !u!65 &143812485
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143812482}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &143812486
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143812482}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.06, y: 2.87, z: 19.25}
+  m_LocalScale: {x: 10, y: 3, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &163360487
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,6 +497,7 @@ MonoBehaviour:
   unitSelect: unitMelee
   meleeUnit: {fileID: 5270759541789063475, guid: fde9b5ff953defe4e88eb62c0db5f983, type: 3}
   rangedUnit: {fileID: 500203709968327449, guid: 461c69a0746209a42a044c935a19f042, type: 3}
+  ground: {fileID: 1068526867}
   cursorTexture: {fileID: 2800000, guid: dac943b421fdbc142a670aeb9b1f6e89, type: 3}
   cursorMode: 0
   hotSpot: {x: 10, y: 10}
@@ -1393,7 +1472,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -1792,8 +1871,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     sentences:
-    - HelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHello
-    - World!World!World!World!World!World!World!World!World!World!World!World!World!World!World!World!World!World!World!World!World!World!World!World!World!World!World!World!World!World!World!World!World!World!World!World!World!World!World!World!
+    - 'Hellooooo '
+    - 'World!World!World!World!World!
+
+      World!World!World!World!World!World!W'
 --- !u!65 &1310726033
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2119,6 +2200,7 @@ MonoBehaviour:
   unitSelect: unitRanged
   meleeUnit: {fileID: 5270759541789063475, guid: fde9b5ff953defe4e88eb62c0db5f983, type: 3}
   rangedUnit: {fileID: 500203709968327449, guid: 461c69a0746209a42a044c935a19f042, type: 3}
+  ground: {fileID: 1068526867}
   cursorTexture: {fileID: 2800000, guid: dac943b421fdbc142a670aeb9b1f6e89, type: 3}
   cursorMode: 0
   hotSpot: {x: 10, y: 10}
