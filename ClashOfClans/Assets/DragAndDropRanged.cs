@@ -4,22 +4,22 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DragAndDrop : MonoBehaviour
+public class DragAndDropRanged : MonoBehaviour
 {
 	private RectTransform rectTransform;
 	private RaycastHit rchit;
-	public bool UnitDropMelee = false;
+	static public bool UnitDropRanged = false;
 	public Button UnitButton;
 	// public int Radistance = 10;
 	private Vector3 Point;
 	public LayerMask layermask;
-	public GameObject unitMelee;
+	public GameObject rangedUnit;
 	public GameObject ground;
-
+	public DragAndDrop DragAndDrop;
 	public Texture2D cursorTexture;
 	public CursorMode cursorMode = CursorMode.Auto;
 	public Vector2 hotSpot = Vector2.zero;
-	public DragAndDropRanged dragAndDropRanged;
+
 
 	void Start()
 	{
@@ -34,21 +34,22 @@ public class DragAndDrop : MonoBehaviour
 	void AddUnit()
 	{
 
-		if (!UnitDropMelee)
+		if (!UnitDropRanged)
 		{
 			Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
-			Debug.Log(UnitDropMelee);
-			DragAndDropRanged.UnitDropRanged = false;
-			UnitDropMelee = true;
+			Debug.Log(UnitDropRanged);
+			DragAndDrop.UnitDropMelee = false;
+			UnitDropRanged = true;
 
 			return;
 		}
 
-		if (UnitDropMelee)
+		if (UnitDropRanged)
 		{
 			Cursor.SetCursor(null, Vector2.zero, cursorMode);
-			Debug.Log(UnitDropMelee);
-			UnitDropMelee = false;
+
+			Debug.Log(UnitDropRanged);
+			UnitDropRanged = false;
 			return;
 		}
 		Debug.Log("clicked");
@@ -60,8 +61,8 @@ public class DragAndDrop : MonoBehaviour
 
 	void Update()
 	{
-	
-		if (Input.GetMouseButtonDown(0) && UnitDropMelee == true)
+
+		if (Input.GetMouseButtonDown(0) && UnitDropRanged == true)
 		{
 			RaycastHit hit;
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -71,15 +72,13 @@ public class DragAndDrop : MonoBehaviour
 				var NewPos = Point;
 				NewPos.y = ground.transform.position.y + 1f;
 				Point = NewPos;
-
-
 				Debug.Log("point" + Point);
-				Instantiate(unitMelee, Point, Quaternion.identity);
+				Instantiate(rangedUnit, Point, Quaternion.identity);
 			}
 
-			
+
 		}
-	
+
 	}
 
 }
