@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class Unit : MonoBehaviour
 {
@@ -29,10 +29,10 @@ public class Unit : MonoBehaviour
 	public bool unitIdle = false;
 
 	// State
-   // public bool stateInactive = true;
-   // public bool stateMoving;
-   // public bool stateAttack;
-
+	// public bool stateInactive = true;
+	// public bool stateMoving;
+	// public bool stateAttack;
+	public Animator animator;
 	public float invocationTime = 0.25f; // wait time
 	// public var currentState : state = state.inactive;
 
@@ -57,6 +57,10 @@ public class Unit : MonoBehaviour
 		{
 			if (_state == state.moving)
 			{
+				if (gameObject.tag == "unitMelee")
+				{
+					animator.SetTrigger("idle");
+				}
 				transform.LookAt(new Vector3(destination.x, 0, destination.z) + new Vector3(transform.position.x, transform.position.y, transform.position.z)); // Object looks direction where it goes
 				if (unitIdle == false)
 				{
@@ -72,10 +76,8 @@ public class Unit : MonoBehaviour
 					{
 						if (Target.tag == "Tower") 
 						{
-							//Debug.Log("Hitting tower");
 							if (Vector3.Distance(gameObject.transform.position, Target.transform.position) <= 2)
 							{
-								//Debug.Log("attack ´towerrr!!!!!!!");
 								unitIdle = false;
 								attack();
 								attackTimer = 0;
@@ -83,8 +85,7 @@ public class Unit : MonoBehaviour
 						}
 						if (Vector3.Distance(gameObject.transform.position, Target.transform.position) <= attackRange)
 						{
-							//Debug.Log("attack!!!!!!!");
-							//Debug.Log(Vector3.Distance(Target.transform.position, gameObject.transform.position));
+
 							unitIdle = false;
 							attack();
 							attackTimer = 0;
@@ -99,7 +100,6 @@ public class Unit : MonoBehaviour
 				}
 				else
 				{
-					//Debug.Log("checkstate");
 					checkState();
 				}
 			}
@@ -110,7 +110,12 @@ public class Unit : MonoBehaviour
 	{
 		if(_state == state.moving)
 		{
+			if (gameObject.tag == "unitMelee")
+			{
+				animator.SetTrigger("idle");
+			}
 			var PossibleEnemys = Physics.OverlapSphere(transform.position, detectionRange); // Gameobjects in our range of detection
+
 
 			for (var i = 0; i < PossibleEnemys.Length; i++)
 			{
@@ -142,6 +147,10 @@ public class Unit : MonoBehaviour
 
 	void attack()
 	{
+		if (gameObject.tag == "unitMelee")
+		{
+			animator.SetTrigger("attack");
+		}
 		var myInfo = gameObject.GetComponent<properties>();
 		var shoot = Instantiate(attackGameObject, transform.position, Quaternion.identity);
 		var shootInfo = shoot.GetComponent<Projectile>();
