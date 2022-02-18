@@ -10,7 +10,6 @@ public class DragAndDrop : MonoBehaviour
 	private RaycastHit rchit;
 	public bool UnitDropMelee = false;
 	public Button UnitButton;
-	// public int Radistance = 10;
 	private Vector3 Point;
 	public LayerMask layermask;
 	public GameObject unitMelee;
@@ -28,8 +27,6 @@ public class DragAndDrop : MonoBehaviour
 
 
 	}
-	// make two scirpts. Melee and ranged. changed Bool to another script everytime button is pressed
-
 
 	void AddUnit()
 	{

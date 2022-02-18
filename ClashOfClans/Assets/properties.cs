@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class properties : MonoBehaviour
 {
@@ -14,13 +15,18 @@ public class properties : MonoBehaviour
 
     public bool airType;
     public bool groundType;
+    public Animator animator;
+    public Unit Unit;
 
     void Start()
     {
         maxHealth = currentHealth;
         healthBar = Instantiate(healthBar, transform.position, Quaternion.identity);
     }
-
+    private IEnumerator waitForAnimation()
+	{
+        yield return new WaitForSeconds(2);
+	}
     // Update is called once per frame
     void Update()
     {
@@ -31,26 +37,28 @@ public class properties : MonoBehaviour
             newScale.x = (currentHealth / 100f) * 1f;
             healthBar.transform.localScale = newScale;
         }
-        else
-        {
-          /*  var newScale = healthBar.transform.localScale;
-            newScale.x = 0;
-            healthBar.transform.localScale = newScale; */
-        }
+
         healthBar.transform.LookAt(Camera.main.transform.position);
         healthBar.transform.position = gameObject.transform.position + Vector3.up;
 
         if (currentHealth <= 0)
         {
-            /*    var myinfo = gameObject.GetComponent<properties>();
-                var controller = gameObject.transform.Find("GameController").GetComponent<gameController>();
-                controller.DestroyTeam(myinfo.team); */
+            if (gameObject.tag == "unitMelee")
+            {
+
+                Unit.velocity = 0f;
+                animator.SetTrigger("die");
+                StartCoroutine(waitForAnimation());
+               // Destroy(healthBar);
+               //Destroy(gameObject);
+                
+
+            }
             var myinfo = gameObject.GetComponent<properties>(); //to main tower
             //GameController1.GetComponent<gameController>().DestroyTeam(myinfo.team); // to main tower Doesnt contine after this
             currentHealth = 0;
-            Debug.Log("(currentHealth <= 0");
             Instantiate(deathEffect, transform.position, Quaternion.identity);
-            Debug.Log("test2");
+
             Destroy(healthBar);
             Destroy(gameObject);
         }

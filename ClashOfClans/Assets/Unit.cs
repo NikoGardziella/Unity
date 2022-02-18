@@ -40,13 +40,13 @@ public class Unit : MonoBehaviour
 
 	void Start()
 	{
-	//	transform.Translate(Vector3.down * 100);
+		velocity = Random.Range(6.0f, 7.5f);
 		var myInfo = gameObject.GetComponent<properties>();
 		attackTimer = attackRatio;
-		/* var UnitPos = gameObject.transform.position;
-		ground.transform.Find("Ground").gameObject.GetComponent<Vector3>();
-		UnitPos.y = ground.transform.position.y + 1;
-		gameObject.transform.position = UnitPos; */
+		if (gameObject.tag == "unitMelee")
+		{
+			animator.SetTrigger("idle");
+		}
 		InvokeRepeating("checkState", invocationTime, detectionRate);
 	}
 
@@ -59,7 +59,7 @@ public class Unit : MonoBehaviour
 			{
 				if (gameObject.tag == "unitMelee")
 				{
-					animator.SetTrigger("idle");
+					animator.SetTrigger("run");
 				}
 				transform.LookAt(new Vector3(destination.x, 0, destination.z) + new Vector3(transform.position.x, transform.position.y, transform.position.z)); // Object looks direction where it goes
 				if (unitIdle == false)
@@ -76,7 +76,7 @@ public class Unit : MonoBehaviour
 					{
 						if (Target.tag == "Tower") 
 						{
-							if (Vector3.Distance(gameObject.transform.position, Target.transform.position) <= 2)
+							if (Vector3.Distance(gameObject.transform.position, Target.transform.position) <= 3)
 							{
 								unitIdle = false;
 								attack();
@@ -100,6 +100,10 @@ public class Unit : MonoBehaviour
 				}
 				else
 				{
+					if (gameObject.tag == "unitMelee")
+					{
+						animator.SetTrigger("idle");
+					}
 					checkState();
 				}
 			}
@@ -112,7 +116,7 @@ public class Unit : MonoBehaviour
 		{
 			if (gameObject.tag == "unitMelee")
 			{
-				animator.SetTrigger("idle");
+				animator.SetTrigger("run");
 			}
 			var PossibleEnemys = Physics.OverlapSphere(transform.position, detectionRange); // Gameobjects in our range of detection
 
