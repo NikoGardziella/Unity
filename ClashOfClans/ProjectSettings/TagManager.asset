@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Tower
+  - unitMelee
   layers:
   - Default
   - TransparentFX

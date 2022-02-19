@@ -100,10 +100,6 @@ public class Unit : MonoBehaviour
 				}
 				else
 				{
-					if (gameObject.tag == "unitMelee")
-					{
-						animator.SetTrigger("idle");
-					}
 					checkState();
 				}
 			}
@@ -114,10 +110,6 @@ public class Unit : MonoBehaviour
 	{
 		if(_state == state.moving)
 		{
-			if (gameObject.tag == "unitMelee")
-			{
-				animator.SetTrigger("run");
-			}
 			var PossibleEnemys = Physics.OverlapSphere(transform.position, detectionRange); // Gameobjects in our range of detection
 
 
@@ -160,5 +152,17 @@ public class Unit : MonoBehaviour
 		var shootInfo = shoot.GetComponent<Projectile>();
 		shootInfo.objective = Target;
 		shootInfo.projectileOfTeam = myInfo.team;
+	}
+
+	private void OnCollisionEnter(Collision collision)
+	{
+
+		Debug.Log("unit collided");
+
+		if (collision.gameObject.tag == "unitMelee")
+		{
+			Debug.Log("unti script. tag collider");
+		}
+
 	}
 }

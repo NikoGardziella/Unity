@@ -23,12 +23,17 @@ public class properties : MonoBehaviour
         maxHealth = currentHealth;
         healthBar = Instantiate(healthBar, transform.position, Quaternion.identity);
     }
-    private IEnumerator waitForAnimation()
-	{
-        yield return new WaitForSeconds(2);
-	}
-    // Update is called once per frame
-    void Update()
+
+    void unitDie()
+    {
+        if (gameObject.tag == "unitMelee")
+        {
+            Debug.Log("unitdieded");
+            Destroy(healthBar);
+            Destroy(gameObject);
+        }
+    }
+        void Update()
     {
         if (currentHealth < maxHealth)
         {
@@ -48,11 +53,6 @@ public class properties : MonoBehaviour
 
                 Unit.velocity = 0f;
                 animator.SetTrigger("die");
-                StartCoroutine(waitForAnimation());
-               // Destroy(healthBar);
-               //Destroy(gameObject);
-                
-
             }
             var myinfo = gameObject.GetComponent<properties>(); //to main tower
             //GameController1.GetComponent<gameController>().DestroyTeam(myinfo.team); // to main tower Doesnt contine after this
