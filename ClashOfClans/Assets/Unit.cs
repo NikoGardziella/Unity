@@ -154,15 +154,5 @@ public class Unit : MonoBehaviour
 		shootInfo.projectileOfTeam = myInfo.team;
 	}
 
-	private void OnCollisionEnter(Collision collision)
-	{
 
-		Debug.Log("unit collided");
-
-		if (collision.gameObject.tag == "unitMelee")
-		{
-			Debug.Log("unti script. tag collider");
-		}
-
-	}
 }
