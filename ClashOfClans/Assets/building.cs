@@ -81,7 +81,7 @@ public class building : MonoBehaviour
 
     void attack()
     {
-        var shoot = Instantiate(attackGameobject, transform.position, Quaternion.identity);
+        var shoot = Instantiate(attackGameobject, attackOrigin.position, Quaternion.identity);
         var shootInfo = shoot.GetComponent<Projectile>();
         shootInfo.objective = Target; 
     }
