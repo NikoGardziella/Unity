@@ -3,7 +3,11 @@ guid: b819e04dec6f17b49be8f110de844319
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - attackGameObjectArrow: {fileID: 7463639982194092549, guid: dec897afb2f59f6448605fd43f24fee0, type: 3}
+  - attackGameObjectMelee: {fileID: 8343751297592053056, guid: feb76d152a4b8654c8a7cf4f0508a535, type: 3}
+  - attackGameObjectTower: {fileID: 7693318984746048858, guid: e0ac9ac1d6a369b4c907ebfd0fbd802f, type: 3}
+  - animator: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

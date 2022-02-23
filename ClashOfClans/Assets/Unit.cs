@@ -19,7 +19,9 @@ public class Unit : MonoBehaviour
 	public float detectionRange = 12f;
 	public float detectionRate = 0.1f;
 	public float attackRange = 10f;
-	public GameObject attackGameObject;
+	public GameObject attackGameObjectArrow;
+	public GameObject attackGameObjectMelee;
+	public GameObject attackGameObjectTower;
 	public float attackRatio = 1f;
 	public bool airAttack = true;
 	public bool groundAttack = true;
@@ -44,9 +46,7 @@ public class Unit : MonoBehaviour
 		var myInfo = gameObject.GetComponent<properties>();
 		attackTimer = attackRatio;
 		if (gameObject.tag == "unitMelee")
-		{
-			animator.SetTrigger("idle");
-		}
+		animator.SetTrigger("idle");
 		InvokeRepeating("checkState", invocationTime, detectionRate);
 	}
 
@@ -57,10 +57,7 @@ public class Unit : MonoBehaviour
 		{
 			if (_state == state.moving)
 			{
-				if (gameObject.tag == "unitMelee")
-				{
-					animator.SetTrigger("run");
-				}
+				animator.SetTrigger("run");
 				transform.LookAt(new Vector3(destination.x, 0, destination.z) + new Vector3(transform.position.x, transform.position.y, transform.position.z)); // Object looks direction where it goes
 				if (unitIdle == false)
 				{
@@ -143,15 +140,34 @@ public class Unit : MonoBehaviour
 
 	void attack()
 	{
+
+		animator.SetTrigger("attack");
+
+		if(gameObject.tag == "unitRanged")
+		{
+			var myInfo = gameObject.GetComponent<properties>();
+			var shoot = Instantiate(attackGameObjectArrow, transform.position, Quaternion.identity);
+			var shootInfo = shoot.GetComponent<Projectile>();
+			shootInfo.objective = Target;
+			shootInfo.projectileOfTeam = myInfo.team;
+		}
+		if (gameObject.tag == "Tower")
+		{
+			var myInfo = gameObject.GetComponent<properties>();
+			var shoot = Instantiate(attackGameObjectTower, transform.position, Quaternion.identity);
+			var shootInfo = shoot.GetComponent<Projectile>();
+			shootInfo.objective = Target;
+			shootInfo.projectileOfTeam = myInfo.team;
+		}
 		if (gameObject.tag == "unitMelee")
 		{
-			animator.SetTrigger("attack");
+			var myInfo = gameObject.GetComponent<properties>();
+			var shoot = Instantiate(attackGameObjectMelee, transform.position, Quaternion.identity);
+			var shootInfo = shoot.GetComponent<Projectile>();
+			shootInfo.objective = Target;
+			shootInfo.projectileOfTeam = myInfo.team;
 		}
-		var myInfo = gameObject.GetComponent<properties>();
-		var shoot = Instantiate(attackGameObject, transform.position, Quaternion.identity);
-		var shootInfo = shoot.GetComponent<Projectile>();
-		shootInfo.objective = Target;
-		shootInfo.projectileOfTeam = myInfo.team;
+
 	}
 
 
