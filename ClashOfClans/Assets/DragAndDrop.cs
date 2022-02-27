@@ -19,9 +19,13 @@ public class DragAndDrop : MonoBehaviour
 	public CursorMode cursorMode = CursorMode.Auto;
 	public Vector2 hotSpot = Vector2.zero;
 	public DragAndDropRanged dragAndDropRanged;
+	public int meleeUnitCount;
+	public Text meleeCounter;
 
 	void Start()
 	{
+		meleeUnitCount = 1;
+		meleeCounter.text = meleeUnitCount.ToString();
 		Button btn = UnitButton.GetComponent<Button>();
 		btn.onClick.AddListener(AddUnit);
 
@@ -62,15 +66,17 @@ public class DragAndDrop : MonoBehaviour
 		{
 			RaycastHit hit;
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-			if (Physics.Raycast(ray, out hit, layermask.value))
+			if (Physics.Raycast(ray, out hit, layermask.value) && meleeUnitCount > 0)
 			{
 				Point = hit.point;
 				var NewPos = Point;
-				NewPos.y = ground.transform.position.y + 1f;
-				Point = NewPos;
+				NewPos.y = ground.transform.position.y;
+				Point = NewPos; 
 
 
 				Debug.Log("point" + Point);
+				meleeUnitCount--;
+				meleeCounter.text = meleeUnitCount.ToString();
 				Instantiate(unitMelee, Point, Quaternion.identity);
 			}
 

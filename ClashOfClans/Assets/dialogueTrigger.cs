@@ -5,20 +5,25 @@ using UnityEngine;
 public class dialogueTrigger : MonoBehaviour
 {
 	public dialogue dialogue;
+	public DialogueManager dialogueManager;
+	public DragAndDrop dragAndDrop;
+	public DragAndDropRanged dragAndDropRanged;
 
 	public void triggerDialogue()
 	{
-		FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+		dialogueManager.StartDialogue(dialogue);
 	}
 
 	private void OnCollisionEnter(Collision collision)
 	{
-	
-		Debug.Log("on collidr enter");
-		Destroy(gameObject);
-		if(collision.gameObject.tag == "unitMelee")
+		if(collision.gameObject.tag == "main")
 		{
+			dragAndDropRanged.rangedUnitCount += 5;
+			dragAndDropRanged.rangedCounter.text = dragAndDropRanged.rangedUnitCount.ToString();
+			dragAndDrop.meleeUnitCount += 5;
+			dragAndDrop.meleeCounter.text = dragAndDrop.meleeUnitCount.ToString();
 			Debug.Log("tag collider");
+			Destroy(gameObject);
 			triggerDialogue();
 		}
 

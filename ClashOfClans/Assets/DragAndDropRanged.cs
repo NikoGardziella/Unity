@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+
 public class DragAndDropRanged : MonoBehaviour
 {
 	private RectTransform rectTransform;
@@ -19,10 +20,14 @@ public class DragAndDropRanged : MonoBehaviour
 	public Texture2D cursorTexture;
 	public CursorMode cursorMode = CursorMode.Auto;
 	public Vector2 hotSpot = Vector2.zero;
-
+	public int rangedUnitCount;
+	public Text rangedCounter;
 
 	void Start()
 	{
+		
+		rangedUnitCount = 1;
+		rangedCounter.text = rangedUnitCount.ToString();
 		Button btn = UnitButton.GetComponent<Button>();
 		btn.onClick.AddListener(AddUnit);
 
@@ -66,13 +71,15 @@ public class DragAndDropRanged : MonoBehaviour
 		{
 			RaycastHit hit;
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-			if (Physics.Raycast(ray, out hit, layermask.value))
+			if (Physics.Raycast(ray, out hit, layermask.value) && rangedUnitCount > 0)
 			{
 				Point = hit.point;
 				var NewPos = Point;
 				NewPos.y = ground.transform.position.y + 1f;
 				Point = NewPos;
 				Debug.Log("point" + Point);
+				rangedUnitCount--;
+				rangedCounter.text = rangedUnitCount.ToString();
 				Instantiate(rangedUnit, Point, Quaternion.identity);
 			}
 
