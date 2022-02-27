@@ -46,7 +46,8 @@ public class building : MonoBehaviour
   
     void Start()
     {
-     //   Debug.Log("start");
+        //   Debug.Log("start");
+
         var myInformation = gameObject.GetComponent<properties>();
          Target = null;
         attackTimer = attackRatio;
