@@ -18,9 +18,9 @@ public class dialogueTrigger : MonoBehaviour
 	{
 		if(collision.gameObject.tag == "main")
 		{
-			dragAndDropRanged.rangedUnitCount += 5;
+			dragAndDropRanged.rangedUnitCount += 2;
 			dragAndDropRanged.rangedCounter.text = dragAndDropRanged.rangedUnitCount.ToString();
-			dragAndDrop.meleeUnitCount += 5;
+			dragAndDrop.meleeUnitCount += 2;
 			dragAndDrop.meleeCounter.text = dragAndDrop.meleeUnitCount.ToString();
 			Debug.Log("tag collider");
 			Destroy(gameObject);

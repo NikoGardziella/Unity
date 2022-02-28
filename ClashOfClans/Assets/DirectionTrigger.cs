@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DirectionTrigger : MonoBehaviour
 {
-    
+
     public string team = "red";
     public Vector3 Direction = Vector3.zero;
 

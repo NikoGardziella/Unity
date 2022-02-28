@@ -17,7 +17,7 @@ public class cameraFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CameraPos.z = ObjectToFollow.transform.position.z - 20f;
+        CameraPos.z = ObjectToFollow.transform.position.z - 15f;
         myCamera.transform.position = CameraPos;
     }
 }
